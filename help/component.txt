@@ -1,0 +1,88 @@
+
+Объект Component
+Наследуется от: BaseComponent
+Определён в пространстве имён: adsk::fusion
+Заголовочный файл: <Fusion/Components/Component.h>
+
+Описание
+Представляет компонент в модели данных. Компонент — это набор геометрии, функций (features) и параметров, которые вместе формируют элемент проекта.
+Один и тот же компонент может многократно использоваться в проекте при помощи объекта Occurrence.
+
+МЕТОДЫ
+allOccurrencesByComponent — Возвращает все вхождения на любом уровне сборки, которые ссылаются на указанный компонент. Список доступен только для чтения.
+boundingBox2 — Возвращает габаритный контейнер (bounding box) заданных типов сущностей внутри компонента.
+classType — Статическая функция, возвращающая тип класса в виде строки. Полезно для проверки типа объекта.
+createBRepEdgeProfile — Создаёт профиль по внешним открытым рёбрам объекта BRepFace.
+createFlatPattern — Создаёт развертку листового тела. Проверить возможность можно через свойство isSheetMetal. Ошибка, если развёртка уже существует.
+createOpenProfile — Создаёт открытый профиль на основе переданных кривых.
+createThumbnail — Создаёт миниатюру (thumbnail) для компонента — как для корневого, так и для вложенного.
+findBRepUsingPoint — Находит все сущности указанного типа в заданной точке.
+findBRepUsingRay — Находит все B-Rep сущности, пересекаемые указанным лучом (BRepFace, BRepEdge, BRepVertex).
+getPhysicalProperties — Возвращает PhysicalProperties с информацией об площади, плотности, массе, объёме и т.д.
+occurrencesByComponent — Возвращает все вхождения на верхнем уровне этого компонента, ссылающиеся на указанный компонент. Список только для чтения.
+saveCopyAs — Сохраняет копию компонента в новом документе по указанному пути.
+transformOccurrences — Применяет трансформацию к набору вхождений за один шаг. Работает только для корневого компонента.
+
+СВОЙСТВА
+activeSheetMetalRule — Текущая активная правило для листового металла (может быть null, если данных нет).
+allAsBuiltJoints — Все монтажные соединения (as-built joints) в этом компоненте и подкомпонентах.
+allAssemblyConstraints — Все сборочные ограничения (assembly constraints) в компоненте и подкомпонентах.
+allJointOrigins — Все точки-основания соединений.
+allJoints — Все соединения в компоненте и подкомпонентах.
+allOccurrences — Все вхождения в сборке, независимо от уровня вложенности.
+allRigidGroups — Все жёсткие группы (rigid groups).
+allTangentRelationships — Все касательные зависимости (tangent relationships).
+asBuiltJoints — Коллекция as-built joints для этого компонента.
+assemblyConstraints — Коллекция assembly constraints для этого компонента.
+attributes — Коллекция атрибутов, связанных с компонентом.
+boundingBox — Габаритный контейнер компонента в мировых координатах.
+bRepBodies — Коллекция B-Rep тел, принадлежащих компоненту.
+canvases — Коллекция холстов (canvases).
+componentColor — Цвет компонента (работает при включённом Display Component Colors).
+constructionAxes — Коллекция осей построения.
+constructionPlanes — Коллекция плоскостей построения.
+constructionPoints — Коллекция точек построения.
+customGraphicsGroups — Коллекция пользовательской графики.
+dataComponent — Объект DataComponent с ID для MFG DM API.
+decals — Коллекция декалей.
+description — Описание компонента.
+entityToken — Уникальный токен объекта для поиска через findEntityByToken.
+features — Коллекция всех функций (features) компонента.
+flatPattern — Развёртка листового тела или null, если отсутствует.
+id — Постоянный ID компонента (не меняется между ревизиями).
+isBodiesFolderLightBulbOn — Видимость папки с телами.
+isCanvasFolderLightBulbOn — Видимость папки с холстами.
+isConstructionFolderLightBulbOn — Видимость папки с элементами построения.
+isDecalFolderLightBulbOn — Видимость папки с декалями.
+isJointsFolderLightBulbOn — Видимость папки с соединениями.
+isLibraryItem — Был ли компонент создан из библиотеки крепежа.
+isOriginFolderLightBulbOn — Видимость папки начала координат.
+isSketchFolderLightBulbOn — Видимость папки с эскизами.
+isValid — Действителен ли объект (не удалён, не повреждён).
+jointOrigins — Коллекция joint origins.
+joints — Коллекция joints.
+material — Материал компонента.
+meshBodies — Коллекция полигональных тел (mesh).
+mfgdmModelId — ID модели в MFGDM.
+modelParameters — Коллекция параметров модели.
+name — Имя компонента (отображается в дереве).
+objectType — Строка с полным типом объекта (namespace::objecttype).
+occurrences — Коллекция вхождений верхнего уровня.
+opacity — Прозрачность (0.0 — прозрачный, 1.0 — непрозрачный).
+orientedMinimumBoundingBox — Ориентированный минимальный габаритный контейнер.
+originConstructionPoint — Точка начала координат.
+parentDesign — Родительский продукт (Design).
+partNumber — Номер детали (по умолчанию совпадает с именем).
+physicalProperties — Физические свойства (низкая точность).
+preciseBoundingBox — Точный габаритный контейнер (B-Rep тела).
+propertyGroups — Коллекция групп свойств.
+revisionId — ID текущей ревизии.
+rigidGroups — Коллекция жёстких групп.
+sketches — Коллекция эскизов.
+tangentRelationships — Коллекция касательных зависимостей.
+xConstructionAxis — Ось X начала координат.
+xYConstructionPlane — Плоскость XY начала координат.
+xZConstructionPlane — Плоскость XZ начала координат.
+yConstructionAxis — Ось Y начала координат.
+yZConstructionPlane — Плоскость YZ начала координат.
+zConstructionAxis — Ось Z начала координат.
