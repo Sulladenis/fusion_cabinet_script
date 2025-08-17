@@ -17,12 +17,12 @@ class Fastener(Base):
         self.hole_features = self._component.features.holeFeatures
     
     def add_hole_position(self, x, y):
-        self.hole_features = self._component.features.holeFeatures
         self.end_point = self.sketch.sketchPoints.add(
             adsk.core.Point3D.create(x, y, 0)
         )
         self.hole_points.add(self.end_point)
         
+
  
     def add_sketch(self, name):
         self.sketch = self._component.sketches.itemByName(name)
@@ -42,7 +42,10 @@ class Fastener(Base):
             )
         hole_input.tipAngle = adsk.core.ValueInput.createByString('180 deg')
         hole_input.participantBodies = [self.face.body]
+        
         self.hole_features.add(hole_input)
+        # Сбрасываем точки для отверстий
+        self.hole_points = adsk.core.ObjectCollection.create()
 
 class FastenerHole(Base):
     

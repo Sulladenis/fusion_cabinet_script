@@ -6,14 +6,14 @@ class KitchenCabinet(Cabinet):
 
 
     def calculate_size(self):
-        if self.joint_type == 'Side-on-bottom':
+        if self.joint_type == 'Bottom-between-sides':
             hor_width = self.width - 2 * self.side_thickness      
             hor_depth = self.depth                                
             ver_width = self.height                              
             ver_depth = self.depth                               
             back_width = self.width - 2 * self.side_thickness     
             back_height = self.height - 2 * self.side_thickness   
-        elif self.joint_type == 'Bottom-between-sides':
+        elif self.joint_type == 'Side-on-bottom':
             hor_width = self.width      
             hor_depth = self.depth                                
             ver_width = self.height- 2 * self.side_thickness                               
@@ -86,7 +86,9 @@ class KitchenCabinet(Cabinet):
             self.side_thickness, self.face_thickness, 'face'
             )
         self.face_panel.inner_face = self.face_panel.extrude.startFaces.item(0)
-
+        self.face_panel.body.isLightBulbOn = False
+        self._palettes.writeText(f'{self.face_panel.body.name}')
+        
 
     
 

@@ -1,6 +1,6 @@
 import adsk.core, adsk.fusion, adsk.cam, traceback
-
-from .fasteners import FasZip17zip15
+from .confirmats import Confirmats
+from .zip151twosides import Zip151TwoSides
 from .kitchen_cabinet import KitchenCabinet
 from .fastener import Fastener
 
@@ -12,11 +12,16 @@ def run(context):
 
 
         cabinet = KitchenCabinet()
-        cabinet.add(60, 90, 60, 1.63, 1.8, 'Корпус')
+        cabinet.add(90, 80, 60, 1.63, 1.8, 'Корпус', 
+                    joint_type="Bottom-between-sides"
+                    )
         cabinet.create_panels()
         
         # Делаем отверстие
-        faszip152zip151 = FasZip17zip15(cabinet)
+        Zip151TwoSides(cabinet)
+        Confirmats(cabinet)
+        
+
 
 
         cabinet._palettes.writeText(f'{dir(cabinet)}')
