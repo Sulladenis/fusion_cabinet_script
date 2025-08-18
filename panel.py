@@ -13,7 +13,7 @@ class Panel(Base):
         self.name = name
 
         self.crate_sketch()
-        self.create_bady()
+        self.create_body()
 
 
     def crate_sketch(self):
@@ -29,7 +29,7 @@ class Panel(Base):
         self.profile = self.sketch.profiles.item(0)
 
 
-    def create_bady(self):
+    def create_body(self):
         if self.base_plane.name == 'Bottom Plane' or self.base_plane.name == 'Left Plane':
             # Выбор направлений реализвать через словарь имен {'Top Plane': True}
             self.ext_thickness = self.side_thickness
