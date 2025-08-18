@@ -1,0 +1,98 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+' Базовый класс
+class Base {
+  - _app: Application
+  - _ui: UserInterface
+  - _palettes: Palette
+  - _design: Design
+  - _root_comp: Component
+  - _occurrences: Occurrences
+  __init()
+}
+
+' Абстрактный корпус
+class Cabinet {
+  - width: float
+  - height: float
+  - depth: float
+  - side_thickness: float
+  - face_thickness: float
+  - name: str
+  - joint_type: str
+  - base_planes: list
+  - _occurrence: Occurrence
+  - _component: Component
+  - _planes: ConstructionPlanes
+  + create_component(name: str)
+  + add(...)
+  + createBasePlanes()
+}
+
+' Конкретный кухонный корпус
+class KitchenCabinet {
+  - all_size: dict
+  - bottom_panel: Panel
+  - top_panel: Panel
+  - left_panel: Panel
+  - right_panel: Panel
+  - back_panel: Panel
+  - face_panel: Panel
+  + calculate_size(): dict
+  + create_panels(): None
+}
+
+' Панель с геометрией
+class Panel {
+  - base_plane: ConstructionPlane
+  - width: float
+  - depth: float
+  - side_thickness: float
+  - face_thickness: float
+  - name: str
+  - sketch: Sketch
+  - profile: Profile
+  - extrude: ExtrudeFeature
+  - inner_face: BRepFace
+  - body: BRepBody
+  + add(...)
+  + crate_sketch()
+  + create_bady()
+}
+
+' Крепёж
+class Fastener {
+  - panel: Panel
+  - face: BRepFace
+  - sketch: Sketch
+  - hole: FastenerHole
+  - hole_points: ObjectCollection
+  - hole_features: HoleFeatures
+  - end_point: SketchPoint
+  + add_panel(panel: Panel)
+  + add_hole_parameters(diameter, depth)
+  + add_hole_position(x, y)
+  + add_sketch(name: str)
+  + create_hole()
+}
+
+' Параметры отверстия
+class FastenerHole {
+  - diameter: float
+  - depth: float
+  + add(diameter, depth)
+}
+
+Cabinet --|> Base
+KitchenCabinet --|> Cabinet
+Panel --|> Base
+Fastener --|> Base
+FastenerHole --|> Base
+
+KitchenCabinet --> Panel
+Fastener --> Panel
+Fastener --> FastenerHole
+
+@enduml
