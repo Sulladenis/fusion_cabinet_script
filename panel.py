@@ -47,7 +47,7 @@ class Panel(Base):
         self.extrude = extrudes.add(extrude_input)
         self.inner_face = self.extrude.endFaces.item(0)
         self.body = self.extrude.bodies.item(0)
-        self.body.name = self.name
+        self.body.name = f'{self._component.name}_{self.name}'
         self._palettes.writeText(f'Создана панель: {self.name}')
 
 
