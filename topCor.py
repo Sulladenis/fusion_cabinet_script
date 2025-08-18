@@ -13,7 +13,7 @@ def run(context):
 
 
         cabinet = KitchenCabinet()
-        cabinet.add(90, 90, 60, 1.63, 1.8 - 0.15, 'Нижний_корпус_3', 
+        cabinet.add(90, 75.8, 60, 1.63, 1.8 - 0.15, 'Нижний_корпус_2', 
                     #joint_type="Bottom-between-sides"
                     )
         cabinet.create_panels()
