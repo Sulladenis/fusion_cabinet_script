@@ -14,16 +14,21 @@ def run(context):
 
 
         cabinet = KitchenCabinet()
-        cabinet.add(83, 81, 40, 1.63, 1.8 - 0.15, 'Нижний_корпус_5', 
-                    joint_type="Bottom-between-sides"
+        cabinet.add(45, # Ширина
+                    87, # Высота
+                    37, # Глубина
+                    1.63, # Толщина дсп
+                    1.8 - 0.15, # Толщина фасада
+                    'К8_2', # Название
+                   joint_type="Bottom-between-sides"
                     )
         cabinet.create_panels()
         
         # Делаем отверстие
-        Zip151TwoSides(cabinet)
-        Confirmats(cabinet)
+        # Zip151TwoSides(cabinet)
+        # Confirmats(cabinet)
         #Slader(cabinet)
-        CabinetLeg(cabinet)
+        #CabinetLeg(cabinet)
         SimpleShelf(cabinet)
 
 
