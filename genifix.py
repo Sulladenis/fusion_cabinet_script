@@ -90,9 +90,11 @@ class Genifix(Base):
 
 
         if self.cabinet.joint_type == "Bottom-between-sides":
-            panels = self.cabinet.left_panel, self.cabinet.right_panel
+            panels = self.cabinet.left_panel, self.cabinet.right_panel            
+            ot = 10 + panels[0].side_thickness
         else:
             panels =  self.cabinet.top_panel, self.cabinet.bottom_panel
+            ot = 10
 
 
         for panel in panels:
@@ -119,9 +121,9 @@ class Genifix(Base):
         self.fasten.add_sketch(f'fas_{panel.name}') # Выбрали эскиз
         # Устанавливаем параметры отверстия диаметр 5 мм (0.5) глубина 12.5 мм (1.25)
         self.fasten.add_hole_parameters(0.5, 1.25)
-        self.fasten.add_hole_position(-(panel.width/2 - panel.side_thickness - 10), panel.depth/2 - panel.side_thickness + 0.5)
+        self.fasten.add_hole_position(-(panel.width/2 - ot), panel.depth/2 - panel.side_thickness + 0.5)
         self.fasten.add_hole_position(2, panel.depth/2 - panel.side_thickness + 0.5)
-        self.fasten.add_hole_position(panel.width/2 - panel.side_thickness - 10, panel.depth/2 - panel.side_thickness + 0.5)
+        self.fasten.add_hole_position(panel.width/2  - ot, panel.depth/2 - panel.side_thickness + 0.5)
         self.fasten.create_hole()
 
         panel = self.cabinet.left_panel
@@ -129,9 +131,9 @@ class Genifix(Base):
         self.fasten.add_sketch(f'fas_{panel.name}') # Выбрали эскиз
         # Устанавливаем параметры отверстия диаметр 5 мм (0.5) глубина 12.5 мм (1.25)
         self.fasten.add_hole_parameters(0.5, 1.25)
-        self.fasten.add_hole_position(-(panel.width/2 - panel.side_thickness - 10), panel.depth/2 - panel.side_thickness + 0.5)
+        self.fasten.add_hole_position(-(panel.width/2 - ot), panel.depth/2 - panel.side_thickness + 0.5)
         self.fasten.add_hole_position(-2, panel.depth/2 - panel.side_thickness + 0.5)
-        self.fasten.add_hole_position(panel.width/2 - panel.side_thickness - 10, panel.depth/2 - panel.side_thickness + 0.5)
+        self.fasten.add_hole_position(panel.width/2 - ot, panel.depth/2 - panel.side_thickness + 0.5)
         self.fasten.create_hole()
 
 

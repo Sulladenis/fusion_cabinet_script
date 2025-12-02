@@ -16,12 +16,12 @@ def run(context):
 
         cabinet = KitchenCabinet()
         cabinet.add(45, # Ширина
-                    87, # Высота
-                    37, # Глубина
+                    80.2, # Высота
+                    60, # Глубина
                     1.63, # Толщина дсп
-                    1.8 - 0.15, # Толщина фасада
-                    'К8_2', # Название
-                    joint_type="Bottom-between-sides"
+                    1.8, # Толщина фасада
+                    'К5', # Название
+                    #joint_type="Bottom-between-sides"
                     )
         cabinet.create_panels()
         
@@ -29,14 +29,10 @@ def run(context):
         # Zip151TwoSides(cabinet)
         Genifix(cabinet)
         # Confirmats(cabinet)
-        #Slader(cabinet)
-        #CabinetLeg(cabinet)
+        # Slader(cabinet)
+        CabinetLeg(cabinet)
         SimpleShelf(cabinet)
 
-
-
-
-        cabinet._palettes.writeText(f'{dir(cabinet)}')
 
 
     except:

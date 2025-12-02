@@ -17,7 +17,11 @@ class Slader(Base):
         # Устанавливаем параметры отверстия диаметр 5 мм (0.5) глубина 12 мм
         self.fasten.add_hole_parameters(0.5, 1.2)
         
-        s1x = panel.width / 2 - 3.8
+        if self.cabinet.joint_type == "Bottom-between-sides":
+            s1x = panel.width / 2 - (3.8 + panel.side_thickness)
+        else:
+            s1x = panel.width / 2 - 3.8
+            
         s1y = -(panel.depth / 2 - 3.7)
         s2x = -(panel.side_thickness/2 + 3.8)
 
