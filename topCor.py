@@ -5,6 +5,7 @@ from .kitchen_cabinet import KitchenCabinet
 from .sliders import Slader
 from .cabinetleg import CabinetLeg
 from .shelfs import SimpleShelf
+from .genifix import Genifix
 
 def run(context):
     ui = None
@@ -20,12 +21,13 @@ def run(context):
                     1.63, # Толщина дсп
                     1.8 - 0.15, # Толщина фасада
                     'К8_2', # Название
-                   joint_type="Bottom-between-sides"
+                    joint_type="Bottom-between-sides"
                     )
         cabinet.create_panels()
         
         # Делаем отверстие
         # Zip151TwoSides(cabinet)
+        Genifix(cabinet)
         # Confirmats(cabinet)
         #Slader(cabinet)
         #CabinetLeg(cabinet)
